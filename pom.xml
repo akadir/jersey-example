@@ -16,6 +16,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jersey.version>2.25.1</jersey.version>
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
     <dependencies>
@@ -136,15 +137,35 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
+                <version>3.0.0-M3</version>
                 <configuration>
                     <!--we can set vm option for junit tests-->
+                    <argLine>@{argLine}</argLine>
+                    <reuseForks>false</reuseForks>
                     <systemPropertyVariables>
                         <foo>bar</foo>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.4</version>
+                <configuration>
+                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
