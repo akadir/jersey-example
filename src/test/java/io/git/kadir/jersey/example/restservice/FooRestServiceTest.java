@@ -40,6 +40,7 @@ public class FooRestServiceTest extends MyJerseyTest {
         assertTrue("success true", (Boolean) responseJson.get("success"));
         assertNotNull("requestId not null", responseJson.get("requestId"));
         assertEquals("result should contain correct data", expectedResultData, responseJson.get("data"));
+        System.out.println("System prop foo: " + System.getProperty("foo"));
     }
 
     @Test
@@ -61,5 +62,6 @@ public class FooRestServiceTest extends MyJerseyTest {
         assertFalse("success false", (Boolean) responseJson.get("success"));
         assertNotNull("requestId not null", responseJson.get("requestId"));
         assertEquals("response should contain error", expectedError, responseJson.get("error"));
+        System.out.println("System prop foo: " + System.getProperty("foo"));
     }
 }
