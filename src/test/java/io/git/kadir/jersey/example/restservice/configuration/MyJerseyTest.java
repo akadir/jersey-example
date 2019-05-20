@@ -6,6 +6,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.test.DeploymentContext;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.ServletDeploymentContext;
+import org.glassfish.jersey.test.TestProperties;
 import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.glassfish.jersey.test.spi.TestContainerException;
 import org.glassfish.jersey.test.spi.TestContainerFactory;
@@ -16,6 +17,7 @@ import org.glassfish.jersey.test.spi.TestContainerFactory;
  * Time :   14:19
  */
 public abstract class MyJerseyTest extends JerseyTest {
+    private static final String RANDOM_PORT = "0";
 
     @Override
     protected TestContainerFactory getTestContainerFactory() throws TestContainerException {
@@ -29,6 +31,7 @@ public abstract class MyJerseyTest extends JerseyTest {
         rc.register(JacksonJsonProvider.class);
         rc.property("jersey.config.server.tracing.type", "ALL");
         rc.property("jersey.config.server.tracing.threshold", "VERBOSE");
+        forceSet(TestProperties.CONTAINER_PORT, RANDOM_PORT);
         return ServletDeploymentContext.forServlet(new ServletContainer(rc)).build();
     }
 }
