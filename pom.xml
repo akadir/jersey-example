@@ -139,8 +139,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <!--we can set vm option for junit tests-->
+                    <!--without this line jacoco-maven-plugin could not generate jacoco.exec-->
                     <argLine>@{argLine}</argLine>
+                    <!--we can set vm option for junit tests-->
                     <reuseForks>false</reuseForks>
                     <systemPropertyVariables>
                         <foo>bar</foo>
