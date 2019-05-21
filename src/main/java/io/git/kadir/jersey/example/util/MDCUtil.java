@@ -26,9 +26,6 @@ public class MDCUtil {
     }
 
     public static void tearDownMDC() {
-        MDC.remove(Constants.REQUEST_ID_KEY);
-        MDC.remove(Constants.REMOTE_ADDRESS_KEY);
-        MDC.remove(Constants.REMOTE_PORT_KEY);
-        MDC.remove(Constants.REMOTE_HOST_KEY);
+        MDC.clear();
     }
 }
