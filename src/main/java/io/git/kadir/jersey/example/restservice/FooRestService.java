@@ -37,4 +37,17 @@ public class FooRestService {
                 .buildJSONObject();
         return Response.ok(response, MediaType.APPLICATION_JSON).build();
     }
+
+    @POST
+    @Path("/ipsum")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postFoo(@FormParam("foo") String foo, @Context HttpServletRequest request) {
+        JSONObject response = new SimpleReturnObjectBuilder()
+                .isSuccess(true)
+                .data(foo)
+                .buildJSONObject();
+
+        return Response.ok(response, MediaType.APPLICATION_JSON).build();
+    }
 }

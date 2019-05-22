@@ -7,8 +7,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.*;
@@ -63,5 +65,20 @@ public class FooRestServiceTest extends MyJerseyTest {
         assertNotNull("requestId not null", responseJson.get("requestId"));
         assertEquals("response should contain error", expectedError, responseJson.get("error"));
         System.out.println("System prop foo: " + System.getProperty("foo"));
+    }
+
+    @Test
+    public void testPostFoo_withStringValue_thenResponseShouldBe200() {
+        MultivaluedHashMap<String, String> form = new MultivaluedHashMap<>();
+        form.add("foo", "foo");
+        JSONObject jo = new JSONObject();
+        jo.put("foo", "foo");
+        Response response = target("/ipsum")
+                .request()
+                .header("userId", UserCredential.CORRECT.getUserId())
+                .header("password", UserCredential.CORRECT.getPassword())
+                .post(Entity.form(form));
+
+        System.out.println(response.getStatus());
     }
 }
