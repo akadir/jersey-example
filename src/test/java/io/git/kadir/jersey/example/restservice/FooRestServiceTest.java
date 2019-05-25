@@ -80,5 +80,6 @@ public class FooRestServiceTest extends MyJerseyTest {
                 .post(Entity.form(form));
 
         System.out.println(response.getStatus());
+        assertEquals("response should be 200", 200, response.getStatus());
     }
 }
