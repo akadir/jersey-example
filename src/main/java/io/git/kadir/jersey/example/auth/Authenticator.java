@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 public class Authenticator {
     private static final Logger logger = LoggerFactory.getLogger(Authenticator.class);
 
+    private Authenticator() {
+    }
+
     public static void authenticate(String userId, String password, HttpServletRequest servletRequest) {
         if (userId.equals("SergenYalcin") && password.equals("Bjk1903")) {
             servletRequest.getSession().setAttribute("userId", userId);
