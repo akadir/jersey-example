@@ -1,5 +1,8 @@
 # Jersey Example
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=io.git.akadir%3Ajersey-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.git.akadir%3Ajersey-example)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=io.git.akadir%3Ajersey-example&metric=sqale_index)](https://sonarcloud.io/dashboard?id=io.git.akadir%3Ajersey-example)
+
 Example rest project to use jersey with filters and exception handlers.
 
 ```
