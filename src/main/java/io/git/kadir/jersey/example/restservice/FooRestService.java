@@ -28,7 +28,7 @@ public class FooRestService {
     @Path("/foo")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getFoo(@QueryParam("bar") String bar, @Context HttpServletRequest request) throws Exception {
+    public Response getFoo(@QueryParam("bar") String bar, @Context HttpServletRequest request) {
         String result = fooService.getFoo(bar);
 
         JSONObject response = new SimpleReturnObjectBuilder()
