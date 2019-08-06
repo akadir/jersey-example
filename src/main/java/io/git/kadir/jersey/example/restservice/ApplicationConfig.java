@@ -5,7 +5,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
 
-@ApplicationPath("api")
+@ApplicationPath("jersey-example/api")
 public class ApplicationConfig extends ResourceConfig {
     public ApplicationConfig() {
         register(JacksonJsonProvider.class);
