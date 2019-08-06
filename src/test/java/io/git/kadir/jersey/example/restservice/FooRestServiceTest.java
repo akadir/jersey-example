@@ -69,8 +69,7 @@ public class FooRestServiceTest extends MyJerseyTest {
     public void testPostFoo_withStringValue_thenResponseShouldBe200() {
         MultivaluedHashMap<String, String> form = new MultivaluedHashMap<>();
         form.add("foo", "foo");
-        JSONObject jo = new JSONObject();
-        jo.put("foo", "foo");
+
         Response response = target("/ipsum")
                 .request()
                 .header(HttpHeaders.AUTHORIZATION, UserCredential.CORRECT.getBasicAuthToken())

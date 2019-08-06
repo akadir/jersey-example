@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
  * Time :   11:07
  */
 public class StatusTest extends MyJerseyTest {
-    private final String isUpPath = "/isup";
+    private final String isUpPath = "/isUp";
 
     @Test
     public void testStatus_withCorrectRequest_thenResponseIsOkAndContainsTrue() throws ParseException {
