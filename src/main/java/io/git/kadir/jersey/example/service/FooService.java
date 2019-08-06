@@ -12,7 +12,7 @@ public class FooService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public String getFoo(String bar) {
-        logger.info("Returns: {}", bar);
+        logger.info("getFoo returns bar");
         return bar;
     }
 }
