@@ -6,17 +6,9 @@ package io.git.kadir.jersey.example.exceptions;
  * Time :   09:07
  */
 public class BadAuthenticationCredentialException extends IllegalArgumentException {
-    private static final String MESSAGE = "Incorrect user name or password";
+    private static final String MESSAGE = "Username or password is missing or invalid.";
 
     public BadAuthenticationCredentialException() {
         super(MESSAGE);
-    }
-
-    public BadAuthenticationCredentialException(Exception e) {
-        super(MESSAGE, e);
-    }
-
-    public BadAuthenticationCredentialException(Throwable t) {
-        super(MESSAGE, t);
     }
 }
