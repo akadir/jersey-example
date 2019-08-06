@@ -7,6 +7,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
@@ -25,8 +26,7 @@ public class StatusTest extends MyJerseyTest {
         final boolean expectedResponseContent = true;
         Response response = target(isUpPath)
                 .request()
-                .header("userId", UserCredential.CORRECT.getUserId())
-                .header("password", UserCredential.CORRECT.getPassword())
+                .header(HttpHeaders.AUTHORIZATION, UserCredential.CORRECT.getBasicAuthToken())
                 .get();
         int responseStatus = response.getStatus();
         String responseContent = response.readEntity(String.class);

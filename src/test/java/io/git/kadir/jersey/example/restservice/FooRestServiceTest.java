@@ -29,8 +29,7 @@ public class FooRestServiceTest extends MyJerseyTest {
         Response response = target(url)
                 .queryParam("bar", "lorem")
                 .request()
-                .header("userId", UserCredential.CORRECT.getUserId())
-                .header("password", UserCredential.CORRECT.getPassword())
+                .header(HttpHeaders.AUTHORIZATION, UserCredential.CORRECT.getBasicAuthToken())
                 .get();
 
         assertEquals("Http Response should be 200: ", Response.Status.OK.getStatusCode(), response.getStatus());
@@ -51,8 +50,7 @@ public class FooRestServiceTest extends MyJerseyTest {
         Response response = target(url)
                 .queryParam("bar", "lorem")
                 .request()
-                .header("userId", UserCredential.WRONG.getUserId())
-                .header("password", UserCredential.WRONG.getPassword())
+                .header(HttpHeaders.AUTHORIZATION, UserCredential.WRONG.getBasicAuthToken())
                 .get();
 
         assertEquals("Http Response should be 401: ", Response.Status.UNAUTHORIZED.getStatusCode(), response.getStatus());
@@ -75,8 +73,7 @@ public class FooRestServiceTest extends MyJerseyTest {
         jo.put("foo", "foo");
         Response response = target("/ipsum")
                 .request()
-                .header("userId", UserCredential.CORRECT.getUserId())
-                .header("password", UserCredential.CORRECT.getPassword())
+                .header(HttpHeaders.AUTHORIZATION, UserCredential.CORRECT.getBasicAuthToken())
                 .post(Entity.form(form));
 
         System.out.println(response.getStatus());
