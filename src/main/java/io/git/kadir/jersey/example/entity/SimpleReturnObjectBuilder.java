@@ -1,6 +1,6 @@
 package io.git.kadir.jersey.example.entity;
 
-import io.git.kadir.jersey.example.util.Constants;
+import io.git.kadir.jersey.example.entity.enumeration.auth.MDCKey;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.MDC;
@@ -57,7 +57,7 @@ public class SimpleReturnObjectBuilder {
         simpleReturnObject.put("success", this.success);
         simpleReturnObject.put("error", this.error);
         simpleReturnObject.put("errorMessage", this.errorMessage);
-        simpleReturnObject.put("requestId", MDC.get(Constants.REQUEST_ID_KEY));
+        simpleReturnObject.put("requestId", MDC.get(MDCKey.REQUEST_ID.getValue()));
         return simpleReturnObject;
     }
 }
