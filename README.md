@@ -1,5 +1,6 @@
 # Jersey Example
 
+[![Build Status](https://travis-ci.org/akadir/jersey-example.svg?branch=master)](https://travis-ci.org/akadir/jersey-example)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=io.git.akadir%3Ajersey-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.git.akadir%3Ajersey-example)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=io.git.akadir%3Ajersey-example&metric=sqale_index)](https://sonarcloud.io/dashboard?id=io.git.akadir%3Ajersey-example)
 
