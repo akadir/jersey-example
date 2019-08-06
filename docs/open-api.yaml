@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  title: Example Jersey Project
+  description: An example project to develop restful web-service using Jersey
+  version: "1.0"
+servers:
+  - url: http://localhost:8080/jersey-example/api
+    description: Local Server
+paths:
+  /isUp:
+    get:
+      description: Returns true in response object if request successful
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleReturnObject'
+              example:
+                data: ""
+                success: true
+                requestId: "9c598e6d-2f0f-4cf3-b2c3-0e215f2ff042"
+                error: ""
+                errorMessage: ""
+        '401':
+          description: Invalid user credential
+          content:
+            applitacion/json:
+              schema:
+                $ref: '#/components/schemas/BadAuthenticationCredentialException'
+              example:
+                data: ""
+                success: false
+                requestId: "2501d705-ef5c-4ac8-b853-a6126e50afbf"
+                errorMessage: "Username or password is missing or invalid."
+                error: "BadAuthenticationCredentialException"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+              example:
+                data: ""
+                success: false
+                requestId: "b0ef7959-8824-422e-a1de-0f80efc3616d"
+                error: "Exception"
+                errorMessage: "Error message"
+  /foo:
+    get:
+      description: Returns parameter bar send in query
+      parameters:
+        - name: bar
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleReturnObject'
+              example:
+                data: $bar
+                success: true
+                requestId: "146f6fa6-cab7-4936-9405-365ed045a85b"
+                error: ""
+                errorMessage: ""
+        '401':
+          description: Invalid user credential
+          content:
+            applitacion/json:
+              schema:
+                $ref: '#/components/schemas/BadAuthenticationCredentialException'
+              example:
+                data: ""
+                success: false
+                requestId: "2501d705-ef5c-4ac8-b853-a6126e50afbf"
+                errorMessage: "Username or password is missing or invalid."
+                error: "BadAuthenticationCredentialException"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+              example:
+                data: ""
+                success: false
+                requestId: "b0ef7959-8824-422e-a1de-0f80efc3616d"
+                error: "Exception"
+                errorMessage: "Error message"
+  /ipsum:
+    get:
+      description: Returns parameter foo send in query
+      parameters:
+        - name: foo
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Başarılı
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleReturnObject'
+              example:
+                data: $foo
+                success: true
+                requestId: "6e3216d0-57c6-48eb-8c39-6cc479b82064"
+                errorMessage: ""
+                error: ""
+        '401':
+          description: Invalid user credential
+          content:
+            applitacion/json:
+              schema:
+                $ref: '#/components/schemas/BadAuthenticationCredentialException'
+              example:
+                data: ""
+                success: false
+                requestId: "2501d705-ef5c-4ac8-b853-a6126e50afbf"
+                errorMessage: "Username or password is missing or invalid."
+                error: "BadAuthenticationCredentialException"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+              example:
+                data: ""
+                success: false
+                requestId: "b0ef7959-8824-422e-a1de-0f80efc3616d"
+                error: "Exception"
+                errorMessage: "Error message"
+components:
+  schemas:
+    SimpleReturnObject:
+      type: object
+      required:
+        - data
+        - success
+        - requestId
+        - error
+        - errorMessage
+      properties:
+        data:
+          type: object
+        success:
+          type: boolean
+        requestId:
+          type: string
+        error:
+          type: string
+        errorMessage:
+          type: string
+    BadAuthenticationCredentialException:
+      description: Authentication information is missing or invalid
+      allOf:
+        - $ref: '#/components/schemas/SimpleReturnObject'
+        - type: object
+      properties:
+        data:
+          example: ""
+        success:
+          example: false
+        requestId:
+          example: "e62bf372-db57-4c10-b139-e11724ee5ee6"
+        error:
+          example: "BadAuthenticationCredentialException"
+        errorMessage:
+          example: "Username or password is missing or invalid."
+    InternalServerError:
+      description: An error occurred on our side
+      allOf:
+        - $ref: '#/components/schemas/SimpleReturnObject'
+        - type: object
+      properties:
+        data:
+          example: ""
+        success:
+          example: false
+        requestId:
+          example: "dac12883-39ea-4597-ae2c-27cb0ee18aac"
+        error:
+          example: "Exception"
+        errorMessage:
+          example: "An error occurred on our side"
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
