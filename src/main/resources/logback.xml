@@ -5,7 +5,7 @@
         <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
             <pattern>
-                %d{YYYY-MM-dd HH:mm:ss.SSS}||%X{request-id}||%X{remote-host}:%X{remote-port}||%X{remote-address}||%msg%n
+                %d{YYYY-MM-dd HH:mm:ss.SSS}||%-5level||%X{x-forwarded-for}||%X{request-id}||%X{remote-address}:%X{remote-port}||%X{user-id}||%msg%n
             </pattern>
         </encoder>
     </appender>
