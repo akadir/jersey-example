@@ -5,7 +5,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.NotFoundException;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -22,16 +22,21 @@ public class GenericExceptionHandler implements ExceptionMapper<Exception> {
 
     @Override
     public Response toResponse(Exception e) {
-        logger.error("An error caught: ", e);
+        logger.error("An error caught in generic exception handler: ", e);
+        int statusCode = getHttpStatus(e);
         JSONObject responseObject = new SimpleReturnObjectBuilder()
                 .isSuccess(false)
                 .error(e.getClass().getSimpleName())
                 .errorMessage(e.getMessage())
                 .buildJSONObject();
-        if (e instanceof NotFoundException) {
-            return Response.status(404).entity(responseObject).type(MediaType.APPLICATION_JSON_TYPE).build();
+        return Response.status(statusCode).entity(responseObject).type(MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    private int getHttpStatus(Exception ex) {
+        if(ex instanceof WebApplicationException) {
+            return ((WebApplicationException)ex).getResponse().getStatus();
         } else {
-            return Response.status(500).entity(responseObject).type(MediaType.APPLICATION_JSON_TYPE).build();
+            return Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         }
     }
 }
