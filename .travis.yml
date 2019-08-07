@@ -5,3 +5,8 @@ addons:
       secure: "nc+7epC5u6Eq5IuNw0UMcNjPgikj483gBWrXGl6UQpw/tpqIbxSQ/w3qL1uYkCAKW6q7oxgDvlYHMCU5+fs7FzwZ2yBnfk9b2gHOokUsxZjb4lICYh4Wto80+LxR+c9ClS4r+TCsVfUcHH6oSxJ3wRq9oY+oqjozwJvqN2xOo+jRwN/UBdy9hhWjH9QFyGmpd1LV2fFOy5/xdRRgeMFtDFXDfgN8kqoe2yazvzbsJqtEHI+r7aBxvfEt5U9uM/G//PoUse2Grp7820H+Dgg11ApXoIQrvlcFo6i7NkmNDDRUdZEnANUDuBRySgZB6VhXPGc7srWCYLvSY9Xx5mvStJAN/0Cpzd2Z2Taggz8/fqxtRpyxrZUBqlStl3y6L9UjHOKQfW8HyzPhv+lqmu5/FQ/fmSWRzvHGI/fR5WQVpnZf5WyCvim+jsJKTgCnIq4BB6CkNg54RkdjwnzkPTppU+rrk7qIJgVhd4+VnHlGEIq7TozzW1AUz9cBi6Hyxgv6zzBMU6S0gtT9LvjUkWzGJcejlL5c3i/MKtEKcxB2Tqka0tIuoKSzIu6eZojqi1mSad/vWZpHIdPUSofQWBcPdR0CmdGcro3kMrHNWj9NdysdJVKAG2P6ChlK0txdVU3MAkOWgQlX49PJ6kR7cv1eWYeF2TcMtXvrhn59ODNjJE4="
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+env:
+  global:
+    - CODECOV_TOKEN=03e11c50-8fda-492d-b4e7-6887684f3932
