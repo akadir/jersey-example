@@ -18,7 +18,7 @@ public class Authenticator {
     }
 
     public static void authenticate(String userId, String password, HttpServletRequest servletRequest) {
-        if (userId.equals("SergenYalcin")) {
+        if ("SergenYalcin".equals(userId)) {
             servletRequest.getSession().setAttribute("userId", userId);
             logger.info("User authenticated | userId: {} | password {}", userId, password);
         } else {

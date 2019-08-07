@@ -19,8 +19,6 @@ import java.lang.reflect.Method;
 @Provider
 public class RequestResponseFilter implements ContainerRequestFilter, ContainerResponseFilter {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Context
-    private HttpServletRequest servletRequest;
 
     @Context
     private ResourceInfo resourceInfo;
