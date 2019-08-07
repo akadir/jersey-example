@@ -28,7 +28,7 @@ mvn jacoco:report
 
 ## Docs
 
-You can check this site to see implemented endpoint details: [https://akadir.github.io/jersey-example]()
+You can check this site to see implemented endpoint details: [https://akadir.github.io/jersey-example](https://akadir.github.io/jersey-example)
 
 open-api.yaml file is here: [open-api.yaml](docs/open-api.yaml)
 
