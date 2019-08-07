@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/akadir/jersey-example.svg?branch=master)](https://travis-ci.org/akadir/jersey-example)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c5ff00c4b28c3c06086d/maintainability)](https://codeclimate.com/github/akadir/jersey-example/maintainability)
+[![codecov](https://codecov.io/gh/akadir/jersey-example/branch/master/graph/badge.svg)](https://codecov.io/gh/akadir/jersey-example)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5dde63c2c88b4419aeef5c8bd73d87b1)](https://www.codacy.com/app/akadir/jersey-example?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=akadir/jersey-example&amp;utm_campaign=Badge_Grade)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=io.git.akadir%3Ajersey-example&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.git.akadir%3Ajersey-example)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=io.git.akadir%3Ajersey-example&metric=sqale_index)](https://sonarcloud.io/dashboard?id=io.git.akadir%3Ajersey-example)
