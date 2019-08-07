@@ -52,7 +52,7 @@ this command will generate new index.html file.
 ### Example cURL Requests
 
 To make successful request SergenYalcin can be used as username with any password combination as you can see in 
-[Authenticator](src/main/java/io/git/kadir/jersey/example/auth/Authenticator.java) class.
+[Authenticator](/src/main/java/io/git/kadir/jersey/example/auth/Authenticator.java#L21) class.
 
 *   GET /isUp:
     ```bash
